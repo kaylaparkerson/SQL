@@ -88,3 +88,13 @@ FROM fortune_companies
 WHERE healthcare_benefits=1
 AND approx_revenue>=500
 ORDER BY approx_revenue desc;
+
+--Assign companies within the Telecommunications industry as "Exceptional Work Life Balance", "Acceptable Work Life Balance", and "Poor Work Life Balance" based on paid time off offered.
+
+SELECT company_name,
+CASE WHEN paid_time_off_days>=21 THEN 'Exceptional'
+WHEN paid_time_off_days>=16 THEN 'Acceptable'
+ELSE 'Poor'
+END AS work_life_balance
+FROM fortune_companies
+WHERE industry='Telecommunications';
